@@ -11,6 +11,8 @@ import Link from "next/link"
 import useProducts, { filterOptions } from "@/hooks/useProducts"
 import { useState } from "react"
 import RadioCards from "@/components/RadioCards"
+import { Select } from "@radix-ui/react-select"
+import { SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 const options = [
   {
@@ -28,7 +30,7 @@ const options = [
 ]
 
 const ProductsPage = () => {
-  const [filters, setFilters] = useState<filterOptions>({ limit: 15, page: 1 })
+  const [filters, setFilters] = useState<filterOptions>({ limit: 15, page: 1, category: "all" })
   const { data: productsData, error, isLoading } = useProducts(filters)
 
   if (isLoading) {
@@ -58,6 +60,19 @@ const ProductsPage = () => {
         <h1 className="text-3xl font-bold mb-8">Produkty</h1>
         <div className="my-4">
           <RadioCards options={options} setFilters={setFilters} filters={filters} />
+          <Select value={filters.category} onValueChange={value => setFilters(prev => ({ ...prev, category: value }))}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Category</SelectLabel>
+                <SelectItem value="all">all</SelectItem>
+                <SelectItem value="beauty">beauty</SelectItem>
+                <SelectItem value="fragrances">fragrances</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
       </header>
       <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
