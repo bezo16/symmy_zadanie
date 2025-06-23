@@ -10,6 +10,22 @@ import {
 import Link from "next/link"
 import useProducts, { filterOptions } from "@/hooks/useProducts"
 import { useState } from "react"
+import RadioCards from "@/components/RadioCards"
+
+const options = [
+  {
+    value: "15",
+    label: "15 items",
+  },
+  {
+    value: "30",
+    label: "30 items",
+  },
+  {
+    value: "45",
+    label: "45 items",
+  },
+]
 
 const ProductsPage = () => {
   const [filters, setFilters] = useState<filterOptions>({ limit: 15, page: 1 })
@@ -40,6 +56,9 @@ const ProductsPage = () => {
     <div className="container mx-auto py-10">
       <header>
         <h1 className="text-3xl font-bold mb-8">Produkty</h1>
+        <div className="my-4">
+          <RadioCards options={options} setFilters={setFilters} filters={filters} />
+        </div>
       </header>
       <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {productsData?.products.map(product => (
