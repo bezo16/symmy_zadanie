@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -5,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import Link from "next/link"
 
 // Mock produkty
 const products = [
@@ -58,8 +60,10 @@ const products = [
 const ProductsPage = () => {
   return (
     <div className="container mx-auto py-10">
-      <h1 className="text-3xl font-bold mb-8">Produkty</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <header>
+        <h1 className="text-3xl font-bold mb-8">Produkty</h1>
+      </header>
+      <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {products.map(product => (
           <Card key={product.id}>
             <CardHeader>
@@ -67,11 +71,13 @@ const ProductsPage = () => {
               <CardDescription>{product.description}</CardDescription>
             </CardHeader>
             <CardContent>
-              {/* Tu môže byť viac info alebo tlačidlo */}
+              <Link href={`/products/${product.id}`} className="w-full">
+                <Button size="lg" variant="default">Zobraziť detail</Button>
+              </Link>
             </CardContent>
           </Card>
         ))}
-      </div>
+      </main>
     </div>
   )
 }
