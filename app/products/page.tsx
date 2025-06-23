@@ -13,13 +13,26 @@ import { useState } from "react"
 
 const ProductsPage = () => {
   const [filters, setFilters] = useState<filterOptions>({ limit: 15, page: 1 })
-  const { data: productsData } = useProducts(filters)
+  const { data: productsData, error, isLoading } = useProducts(filters)
 
-  if (!productsData) {
+  if (isLoading) {
     return <div className="container mx-auto py-10">Načítavanie produktov...</div>
   }
 
-  if (productsData.products.length === 0) {
+  if (productsData && productsData.products.length === 0) {
+    return <div className="container mx-auto py-10">Žiadne produkty na zobrazenie.</div>
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto py-10">
+        Chyba pri načítavaní produktov:
+        {error.message}
+      </div>
+    )
+  }
+
+  if (!productsData) {
     return <div className="container mx-auto py-10">Žiadne produkty na zobrazenie.</div>
   }
 
@@ -29,7 +42,7 @@ const ProductsPage = () => {
         <h1 className="text-3xl font-bold mb-8">Produkty</h1>
       </header>
       <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {productsData.products.map(product => (
+        {productsData?.products.map(product => (
           <Card key={product.id}>
             <CardHeader>
               <CardTitle>{product.title}</CardTitle>

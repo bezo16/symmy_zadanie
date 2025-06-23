@@ -5,10 +5,28 @@ import Link from "next/link"
 
 const ProductPage = () => {
   const params = useParams()
-  const { data: product, isLoading } = useProduct(params.id?.toString() || undefined)
+  const { data: product, isLoading, error } = useProduct(params.id?.toString() || undefined)
 
   if (isLoading) {
     return <div className="container mx-auto py-10">Načítavanie produktu...</div>
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto py-10">
+        Chyba pri načítavaní produktu:
+        {" "}
+        {error.message}
+      </div>
+    )
+  }
+
+  if (!product) {
+    return (
+      <div className="container mx-auto py-10">
+        Produkt neexistuje alebo nebol nájdený.
+      </div>
+    )
   }
 
   return (
