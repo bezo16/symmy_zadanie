@@ -32,7 +32,7 @@ const ProductsFilters: FC<Props> = ({ filters, setFilters }) => {
     <div className="my-4">
       <RadioCards options={options} setFilters={setFilters} filters={filters} />
       <Select value={filters.category} onValueChange={value => setFilters(prev => ({ ...prev, category: value }))}>
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="w-[250px] my-4">
           <h2>category:</h2>
           <SelectValue placeholder="Select a Category" />
         </SelectTrigger>
@@ -49,7 +49,7 @@ const ProductsFilters: FC<Props> = ({ filters, setFilters }) => {
         </SelectContent>
       </Select>
       <Select value={filters.sort} onValueChange={value => setFilters(prev => ({ ...prev, sort: (value as "price-asc" | "price-desc" | "none") }))}>
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="w-[250px]">
           <h2>sort by:</h2>
           <SelectValue placeholder="Select a Sorting" />
         </SelectTrigger>
