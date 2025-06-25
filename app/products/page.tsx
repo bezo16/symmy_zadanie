@@ -1,8 +1,8 @@
 "use client"
 import { filterOptions } from "@/hooks/useProducts"
 import { useState } from "react"
-import ProductsList from "@/components/lists/ProductsList"
-import ProductsFilters from "@/components/lists/ProductsFilters"
+import ProductsList from "@/components/products/ProductsList"
+import ProductsFilters from "@/components/products/ProductsFilters"
 
 const ProductsPage = () => {
   const [filters, setFilters] = useState<filterOptions>({ limit: 15, page: 1, category: "all", sort: "none" })
