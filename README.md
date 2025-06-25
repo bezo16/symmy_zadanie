@@ -32,3 +32,6 @@ Tento projekt je jednoduchá aplikácia pre výpis produktov a detail produktu, 
 ## Stručný popis riešenia
 
 Aplikácia využíva TanStack Query na získavanie dát z mock API. Komponenty sú rozdelené na znovupoužiteľné časti. Štýly sú riešené pomocou Tailwind CSS + Shadcn.ui. Dôraz bol kladený na jednoduchosť, prehľadnosť a základnú responzivitu.
+
+## Demo
+[https://symmy-zadanie.netlify.app/products](https://symmy-zadanie.netlify.app/products)
