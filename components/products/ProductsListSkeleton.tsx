@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui
 import { Button } from "../ui/button"
 
 const ProductsListSkeleton: React.FC = () => {
-  const skeletonItems = Array.from({ length: 5 }) // Adjust the number of skeleton items as needed
+  const skeletonItems = Array.from({ length: 15 }) // Adjust the number of skeleton items as needed
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

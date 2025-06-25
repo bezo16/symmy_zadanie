@@ -15,8 +15,6 @@ const ProductsPage = () => {
     const category = url.searchParams.get("category")
     const sort = url.searchParams.get("sort") as "price-asc" | "price-desc" | "none"
 
-    console.log(url)
-
     setFilters({
       sort: sort ? sort : "none",
       limit: limit ? limit : 15,

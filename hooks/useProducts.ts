@@ -29,8 +29,6 @@ const useProducts = (filterOptions: filterOptions = { limit: 15, page: 0, catego
         url.searchParams.append("order", "desc")
       }
 
-      console.log(url)
-
       const response = await axios.get<ProductsResponse>(url.toString())
 
       return response.data
