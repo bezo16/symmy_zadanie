@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card"
 import Link from "next/link"
 import useProducts, { filterOptions } from "@/hooks/useProducts"
+import ProductsListSkeleton from "./ProductsListSkeleton"
 
 type Props = {
   filters: filterOptions
@@ -18,9 +19,7 @@ type Props = {
 const ProductsList: FC<Props> = ({ filters, setFilters }) => {
   const { data: productsData, error, isLoading } = useProducts(filters)
 
-  if (isLoading) {
-    return <div className="container mx-auto py-10">Načítavanie produktov...</div>
-  }
+  if (isLoading) return <ProductsListSkeleton />
 
   if (productsData && productsData.products.length === 0) {
     return <div className="container mx-auto py-10">Žiadne produkty na zobrazenie.</div>

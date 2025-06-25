@@ -1,8 +1,6 @@
 "use client"
-
 import { filterOptions } from "@/hooks/useProducts"
 import { useState } from "react"
-
 import ProductsList from "@/components/lists/ProductsList"
 import ProductsFilters from "@/components/lists/ProductsFilters"
 
